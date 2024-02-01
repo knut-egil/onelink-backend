@@ -5,8 +5,9 @@ dotenv.config({
 });
 
 // Import
-import database from "./database";
 import express from "express";
+import cors from "cors";
+import database from "./database";
 import routes from "./routes";
 
 // Connect to database!
@@ -25,6 +26,7 @@ database
     const app = express();
 
     // Set up middleware
+    app.use(cors());
     app.use(express.json());
 
     // Use routes!
