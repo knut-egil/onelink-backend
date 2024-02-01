@@ -1,23 +1,46 @@
 // Import
+import database from "./database";
 import express from "express";
 import routes from "./routes";
 
-// Set up express app
-const app = express();
+// Connect to database!
+database
+  .init()
+  .then((isInitialized) => {
+    // Check if database successfully initialized
+    if (!isInitialized)
+      throw new Error("Failed to establish database connection.");
 
-// Set up middleware
-app.use(express.json());
+    // Success! Let's start our express app
+    console.log(
+      `[${new Date().toISOString()}] Onelink Backend @ Connected to database!`
+    );
+    // Set up express app
+    const app = express();
 
-// Use routes!
-app.use(routes);
+    // Set up middleware
+    app.use(express.json());
 
-// Define listen port
-const PORT = process.env.PORT ?? 3000;
+    // Use routes!
+    app.use(routes);
 
-// Listen
-app.listen(PORT, () => {
-  // Log
-  console.log(
-    `[${new Date().toISOString()}] Onelink Backend @ http://127.0.0.1:${PORT}/`
-  );
-});
+    // Define listen port
+    const PORT = process.env.PORT ?? 3000;
+
+    // Listen
+    app.listen(PORT, () => {
+      // Log
+      console.log(
+        `[${new Date().toISOString()}] Onelink Backend @ http://127.0.0.1:${PORT}/`
+      );
+    });
+  })
+  .catch((err) => {
+    // Database connection failed
+    console.log(
+      `[${new Date().toISOString()}] Onelink Backend @ Failed connecting to database, shutting down...`
+    );
+
+    // Exit
+    process.exit();
+  });
