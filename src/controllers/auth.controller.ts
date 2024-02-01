@@ -65,17 +65,43 @@ const register = async (
 
   // Validation successful!
   // Create user document...
-  const user = await User.create({
-    username,
-    email,
-    password,
-  });
+  try {
+    const user = await User.create({
+      username,
+      email,
+      password,
+    });
 
-  // Return user document as UserDto!
-  return res.json({
-    success: true,
-    data: user as UserDto,
-  });
+    // Create result object
+    const result: UserDto = {
+      id: user.id,
+      username: user.username,
+      email: user.email,
+
+      created_at: user.created_at,
+      updated_at: user.updated_at,
+    };
+
+    // Return user document as UserDto!
+    return res.json({
+      success: true,
+      data: result,
+    });
+  } catch (err) {
+    const { stack, message } = err as Error;
+    // Log error, probably unique field collissions!
+    console.error(
+      `[${new Date().toISOString()}] Onelink Backend @ An error occured while registering user! Error: ${
+        stack ?? message
+      }`
+    );
+
+    // Generic error message
+    return res.status(500).json({
+      success: false,
+      error: "An error occured while registering user.",
+    });
+  }
 };
 
 // ---
@@ -142,10 +168,20 @@ const login = async (
     });
 
   // Login successful!
+  // Create result object
+  const result: UserDto = {
+    id: user.id,
+    username: user.username,
+    email: user.email,
+
+    created_at: user.created_at,
+    updated_at: user.updated_at,
+  };
+
   // Return user document as UserDto!
   return res.json({
     success: true,
-    data: user as UserDto,
+    data: result,
   });
 };
 
