@@ -1,0 +1,7 @@
+{
+  "name": "onelink-backend",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "author": "Knut Egil V. Nygård <knut.egil.vn@gmail.com>",
+  "license": "MIT"
+}
