@@ -20,7 +20,7 @@ type UserModelDto = UserDto & {
 
 // User instance methods
 interface IUserMethods {
-  checkPassword(): Promise<boolean>;
+  checkPassword(password: string): Promise<boolean>;
 }
 
 // Create model type!
@@ -139,3 +139,4 @@ const User = mongoose.model<UserModelDto, UserModel>("User", userSchema);
 
 // Export model!
 export default User;
+export { UserDto };
