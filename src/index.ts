@@ -1,3 +1,9 @@
+// Setup env
+import dotenv from "dotenv";
+dotenv.config({
+  path: [".env", process.env.NODE_ENV].filter((v) => v).join("."),
+});
+
 // Import
 import database from "./database";
 import express from "express";
