@@ -30,7 +30,7 @@ database
     app.use(express.json());
 
     // Use routes!
-    app.use(routes);
+    app.use("/api", routes);
 
     // Define listen port
     const PORT = process.env.PORT ?? 3000;
