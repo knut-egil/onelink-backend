@@ -27,7 +27,7 @@ interface IUserMethods {
 type UserModel = mongoose.Model<UserModelDto, {}, IUserMethods>;
 
 // Create model
-const userSchema = new mongoose.Schema<UserModelDto, UserModel, IUserMethods>({
+const UserSchema = new mongoose.Schema<UserModelDto, UserModel, IUserMethods>({
   /**
    * Username
    *
@@ -91,7 +91,7 @@ const userSchema = new mongoose.Schema<UserModelDto, UserModel, IUserMethods>({
 });
 
 // Add functions!
-userSchema.method(
+UserSchema.method(
   "checkPassword",
   async function checkPassword(password: string): Promise<boolean> {
     // User instance
@@ -117,7 +117,7 @@ userSchema.method(
 );
 
 // Pre-save hook
-userSchema.pre("save", async function (next) {
+UserSchema.pre("save", async function (next) {
   // User instance
   const user = this;
 
@@ -135,8 +135,8 @@ userSchema.pre("save", async function (next) {
 });
 
 // Create model!
-const User = mongoose.model<UserModelDto, UserModel>("User", userSchema);
+const User = mongoose.model<UserModelDto, UserModel>("User", UserSchema);
 
 // Export model!
 export default User;
-export { UserDto };
+export { UserDto, UserSchema, UserModel };
