@@ -40,8 +40,13 @@ Allow for some sort of categorization type thing to render specific links/button
 
 We have to start somewhere, and this time our first goals should be:
 
-- [ ] Create a basic profile view, custom image, display name and link-buttons in a column. Some sleek, modern, minimalist look as default style (with a splash of pastel colors and good vibes)
+- [ ] Create a basic profile view, custom image, display name and link-buttons in a column.
 
-- [ ] Plan, design and create the user registration and authentication services, keep it simple. Collect basic info, at minimum: username, email and password. Nice to haves: country, full-name and gender. - All users should have some generic but cool profile picture, either random squiggles, possibly with the user's initials?
+  - [ ] Some sleek, modern, minimalist look as default style (with a splash of pastel colors and good vibes)
 
-- [ ] Basic analytics, at minimum: Profile views (first-time visits & re-visits), Viewer countries based off of IP, Amount of clicks on a per-button basis. Possibly use some fingerprinting to identify visitors instead of session cookies? Could be good to re-identify visitors viewing in app web-views vs mobile browser
+- [ ] Plan, design and create the user registration and authentication services, keep it simple. Collect basic info, at minimum: username, email and password. Nice to haves: country, full-name and gender.
+
+  - [ ] All users should have some generic but cool profile picture, either random squiggles, possibly with the user's initials?
+
+- [ ] Basic analytics, at minimum: Profile views (first-time visits & re-visits), Viewer countries based off of IP, Amount of clicks on a per-button basis.
+  - [ ] Possibly use some fingerprinting to identify visitors instead of session cookies? Could be good to re-identify visitors viewing in app web-views vs mobile browser
